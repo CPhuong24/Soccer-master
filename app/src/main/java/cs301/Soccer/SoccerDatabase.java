@@ -146,6 +146,7 @@ public class SoccerDatabase implements SoccerDB {
                 SoccerPlayer current = SoccerPlayer.getValue();
                 if (current.getTeamName().equals(teamName)) {
                     count++;
+
                 }
             }
             return count;
