@@ -161,6 +161,30 @@ public class SoccerDatabase implements SoccerDB {
     // get the nTH player
     @Override
     public SoccerPlayer playerIndex(int idx, String teamName) {
+        if(idx > numPlayers(teamName)){
+            return null;
+        }
+        else{
+            Enumeration<String> players = database.keys();
+            for(int i =0; i< idx; i++){
+                players.nextElement();
+            }
+            if(teamName == null){
+                while(players.hasMoreElements()){
+                    return database.get(players.nextElement());
+                }
+            }
+            else{
+                while(players.hasMoreElements()){
+                    if(database.get(players.nextElement()).getTeamName().equals(teamName)){
+                        return database.get(players.nextElement());
+                    }
+                    else
+                        players.nextElement();
+                }
+
+            }
+        }
         return null;
     }
 
